@@ -1,0 +1,5 @@
+[workspace]
+members = [ "judecoin-harness", "judecoin-rpc", "swap", "judecoin-wallet" ]
+
+[patch.crates-io]
+judecoin = { git = "https://github.com/comit-network/judecoin-rs", rev = "818f38b" }

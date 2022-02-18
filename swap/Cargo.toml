@@ -1,0 +1,90 @@
+[package]
+name = "swap"
+version = "0.10.2"
+authors = [ "The COMIT guys <hello@comit.network>" ]
+edition = "2018"
+description = "JUDE/BTC trustless atomic swaps."
+
+[lib]
+name = "swap"
+
+[dependencies]
+anyhow = "1"
+async-compression = { version = "0.3", features = [ "bzip2", "tokio" ] }
+async-trait = "0.1"
+atty = "0.2"
+backoff = { version = "0.3", features = [ "tokio" ] }
+base64 = "0.13"
+bdk = "0.12"
+big-bytes = "1"
+bitcoin = { version = "0.27", features = [ "rand", "use-serde" ] }
+bmrng = "0.5"
+comfy-table = "4.1.1"
+config = { version = "0.11", default-features = false, features = [ "toml" ] }
+conquer-once = "0.3"
+curve25519-dalek = { package = "curve25519-dalek-ng", version = "4" }
+data-encoding = "2.3"
+dialoguer = "0.8"
+directories-next = "2"
+ecdsa_fun = { git = "https://github.com/LLFourn/secp256kfun", default-features = false, features = [ "libsecp_compat", "serde" ] }
+ed25519-dalek = "1"
+futures = { version = "0.3", default-features = false }
+hex = "0.4"
+itertools = "0.10"
+libp2p = { git = "https://github.com/libp2p/rust-libp2p.git", default-features = false, features = [ "tcp-tokio", "yamux", "mplex", "dns-tokio", "noise", "request-response", "websocket", "ping", "rendezvous" ] }
+judecoin = { version = "0.12", features = [ "serde_support" ] }
+judecoin-rpc = { path = "../judecoin-rpc" }
+pem = "1.0"
+proptest = "1"
+qrcode = "0.12"
+rand = "0.8"
+rand_chacha = "0.3"
+reqwest = { version = "0.11", features = [ "rustls-tls", "stream", "socks" ], default-features = false }
+rust_decimal = { version = "1", features = [ "serde-float" ] }
+rust_decimal_macros = "1"
+serde = { version = "1", features = [ "derive" ] }
+serde_cbor = "0.11"
+serde_json = "1"
+serde_with = { version = "1", features = [ "macros" ] }
+sha2 = "0.9"
+sigma_fun = { git = "https://github.com/LLFourn/secp256kfun", default-features = false, features = [ "ed25519", "serde" ] }
+sqlx = { version = "0.5", features = [ "sqlite", "runtime-tokio-rustls", "offline" ] }
+structopt = "0.3"
+strum = { version = "0.23", features = [ "derive" ] }
+thiserror = "1"
+time = "0.3"
+tokio = { version = "1", features = [ "rt-multi-thread", "time", "macros", "sync", "process", "fs", "net" ] }
+tokio-socks = "0.5"
+tokio-tungstenite = { version = "0.15", features = [ "rustls-tls" ] }
+tokio-util = { version = "0.6", features = [ "io" ] }
+toml = "0.5"
+torut = { version = "0.2", default-features = false, features = [ "v3", "control" ] }
+tracing = { version = "0.1", features = [ "attributes" ] }
+tracing-appender = "0.1"
+tracing-futures = { version = "0.2", features = [ "std-future", "futures-03" ] }
+tracing-subscriber = { version = "0.2", default-features = false, features = [ "fmt", "ansi", "env-filter", "chrono", "tracing-log", "json" ] }
+url = { version = "2", features = [ "serde" ] }
+uuid = { version = "0.8", features = [ "serde", "v4" ] }
+void = "1"
+
+[target.'cfg(not(windows))'.dependencies]
+tokio-tar = "0.3"
+
+[target.'cfg(windows)'.dependencies]
+zip = "0.5"
+
+[dev-dependencies]
+bitcoin-harness = { git = "https://github.com/coblox/bitcoin-harness-rs" }
+get-port = "3"
+hyper = "0.14"
+judecoin-harness = { path = "../judecoin-harness" }
+port_check = "0.1"
+proptest = "1"
+serde_cbor = "0.11"
+spectral = "0.6"
+tempfile = "3"
+testcontainers = "0.12"
+
+[build-dependencies]
+vergen = { version = "6", default-features = false, features = [ "git", "build" ] }
+anyhow = "1"
